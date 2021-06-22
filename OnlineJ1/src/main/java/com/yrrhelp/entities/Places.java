@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,9 +34,12 @@ public class Places {
 	String place;
 	
 	Integer day;
+	
 	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="packageId")
+	@JsonIgnore
     private TripPackage tripPackage;
+	@JsonIgnore
 	@OneToMany(mappedBy = "place",fetch=FetchType.LAZY)
 	private List<Hotel> hotel;
 	public Places( String place, Integer day) {

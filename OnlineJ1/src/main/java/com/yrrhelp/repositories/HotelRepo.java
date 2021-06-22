@@ -15,4 +15,8 @@ public interface HotelRepo extends CrudRepository <Hotel,Integer>{
 //	("from Hotel h, Places p where h.location ==?1 and p.location == ?1")
 //	List<Hotel> getHotelbyLocation(String location);
 //	List<Hotel> getHotelbyPackageID(Integer packID);
+	
+	@Query("SELECT h FROM Hotel h WHERE h.location = ?1 AND h.hotelrent<=?2")
+	List<Hotel> findByLocationAndRent(String location, Integer hotelrent);
+
 }

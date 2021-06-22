@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,6 +36,7 @@ public class Customer {
 	private String fullname;
 	private String email_ID;
 	private String user_type;
+	@JsonIgnore
 	@OneToMany(mappedBy = "customer",fetch=FetchType.LAZY)
 	private List<PackageBooking> packagebooking;
 	

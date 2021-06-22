@@ -38,7 +38,7 @@ public class HotelDaywiseController {
 //			@PathVariable Integer hotel,@PathVariable Integer place2,@PathVariable Integer hotel2,@PathVariable Integer place3,@PathVariable Integer hotel3)
 //	{
 //		
-//		HotelDaywise g= hoteldd.addHotelDaywise(new HotelDaywise(place1,booking_id));
+//		HotelDaywise g= hoteldd.addHotelDaywise(new HotelDaywise(hotel,booking_id));
 //		HotelDaywise h= hoteldd.addHotelDaywise(new HotelDaywise(place2,booking_id));
 //		HotelDaywise i= hoteldd.addHotelDaywise(new HotelDaywise(place3,booking_id));
 //		return g;

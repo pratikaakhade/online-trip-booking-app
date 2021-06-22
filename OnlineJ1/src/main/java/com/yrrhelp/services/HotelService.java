@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 
 import com.yrrhelp.entities.Hotel;
 import com.yrrhelp.entities.Places;
+import com.yrrhelp.exception.HotelException;
 import com.yrrhelp.repositories.HotelRepo;
 import com.yrrhelp.repositories.PlaceRepo;
 import com.yrrhelp.repositories.TripPackageRepo;
@@ -53,6 +55,16 @@ public class HotelService {
 					h.addAll(places.getHotel());
 					}
 			return h;
+		}
+		public List<Hotel> getHotelAndRent(String loc, Integer rent) throws HotelException {
+			try {
+				List<Hotel> hotelList = new ArrayList<>();
+				htlrp.findByLocationAndRent(loc, rent).forEach(hotelList::add);
+				return hotelList;
+			} catch (DataAccessException e) {
+				throw new HotelException(e.getMessage(), e);
+			}
+
 		}
 
 //		public Hotel addHotel(Hotel hotel, Integer placeid) {

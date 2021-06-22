@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.yrrhelp.entities.Customer;
 import com.yrrhelp.entities.Hotel;
 import com.yrrhelp.entities.Places;
+import com.yrrhelp.exception.HotelException;
 import com.yrrhelp.services.CustomerService;
 import com.yrrhelp.services.HotelService;
 import com.yrrhelp.services.PackageBookingService;
@@ -68,6 +71,16 @@ public class HotelController {
 //		
 		List<Hotel> h = htlsrv.getallbyloc(packid);
 		return h;
+	}
+	@GetMapping("/loc/{loc}/{rent}")
+	public List<Hotel> showallbyloc(@PathVariable("loc") String loc, @PathVariable("rent") Integer rent) {
+		try {
+			List<Hotel> m = htlsrv.getHotelAndRent(loc, rent);
+			return m;
+		} catch (HotelException e) {
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to get hotel", e);
+		}
+		
 	}
 }
 

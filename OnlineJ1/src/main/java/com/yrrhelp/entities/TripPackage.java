@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 //import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -36,6 +38,7 @@ public class TripPackage {
 	private String destination;
 	private Integer cost;
 	private Integer No_of_day;
+	@JsonIgnore
 	@OneToMany(mappedBy = "tripPackage",fetch=FetchType.LAZY)
 	private List<Places> place;
 	public TripPackage(Integer packageID, String destination, Integer cost, Integer no_of_day) {

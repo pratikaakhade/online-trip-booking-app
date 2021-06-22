@@ -34,7 +34,7 @@ public class Payment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer paymentID;
-	
+	private Integer amount;
 	private String paymentType;
 	private String status;
 	private Date paymentDate;

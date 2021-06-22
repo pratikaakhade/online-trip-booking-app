@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +31,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-//If the @Table annotation is ignored, then class name will be the table name
+//If the @Table annot	ation is ignored, then class name will be the table name
 //@Table(name = "PackageBooking")
 public class PackageBooking {
 	@Id
@@ -40,6 +42,7 @@ public class PackageBooking {
 	private Date bookingDate;	
 	private Date tripStartDate;
 	private Date tripEndDate;
+	@JsonIgnore
 	@OneToMany(mappedBy = "packagebooking",fetch=FetchType.LAZY)
 	private List<HotelDaywise> hoteldaywise;
 	@ManyToOne(cascade = CascadeType.ALL)

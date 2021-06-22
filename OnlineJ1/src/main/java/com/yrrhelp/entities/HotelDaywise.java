@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,13 +39,21 @@ public class HotelDaywise {
 	private Integer srNo;
 	
 	
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
 
     @JoinColumn(name="hotelID")
-    private Hotel hotel;	
+	
+    private Hotel hotel;
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	
     @JoinColumn(name="bookingID")
     private PackageBooking packagebooking;
+	public HotelDaywise(Hotel hotel, PackageBooking packagebooking) {
+		super();
+		this.hotel = hotel;
+		this.packagebooking = packagebooking;
+	}
+	
 }

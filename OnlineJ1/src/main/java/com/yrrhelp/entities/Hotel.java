@@ -44,6 +44,7 @@ public class Hotel {
 
     @JoinColumn(name="placeID")
     private Places place;
+	@JsonIgnore
 	@OneToMany(mappedBy = "hotel",fetch=FetchType.LAZY)
 	private List<HotelDaywise> hoteldaywise;
 
