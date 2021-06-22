@@ -1,4 +1,4 @@
-package com.example.SpringDataJPA;
+package com.yrrhelp.SpringDataJPA;
 
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;

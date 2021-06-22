@@ -1,4 +1,4 @@
-package com.yrrhelp.SpringDataJPA;
+package com.yrrhelp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,4 +17,4 @@ public class SpringDataJpaApplication {
 	}
 
 }
-	
+		
